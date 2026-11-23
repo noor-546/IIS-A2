@@ -92,6 +92,27 @@ def check_session(session):
         pending.append(session)
         print("This won't be used for your recommendations until you confirm it's you. Please check back later.")
 
+def review_pending():
+    if not pending:
+        return
+    print(f"\nYou have {len(pending)} session(s) waiting for your answer.")
+    for session in list(pending):     # loop over a copy to remove safely
+        print("\nWaiting:", session)
+        for reason in explain(session, build_profile(history)):
+            print(" -", reason)
+        answer = input("Was this you? (yes/no): ").strip().lower()
+
+        if answer in ("yes", "y"):
+            history.append(session)
+            pending.remove(session)
+            print("Got it, I'll use this for your recommendations.")
+        elif answer in ("no", "n"):
+            ignored.append(session)
+            pending.remove(session)
+            print("Session ignored, your recommendations won't change.")
+        else:
+            print("Still waiting: this won't be used until you confirm it's you.")
+
 history = [
     ["The Silent Harbour", "Another Crime"],
     ["The Act"],
@@ -116,6 +137,8 @@ for session in new_sessions:
     print("\nNew session:", session)
     check_session(session)
 
+print("\nReviewing pending sessions...")
+review_pending()
 print("\nFinal profile:")
 for genre, share in build_profile(history).items():
     print(f"  {genre}: {share * 100:.0f}%")
