@@ -1,4 +1,3 @@
-# Each title: a name and a genre
 catalogue = [
     {"name": "The Silent Harbour", "genre": "crime"},
     {"name": "Busy Rocket", "genre": "kids"},
@@ -62,34 +61,36 @@ def explain(session, profile):
 
 MIN_SESSIONS = 5
 ignored = []    # sessions the account holder said were not them
+pending = []    # sessions the account holder has not yet confirmed
 
 def check_session(session):
     profile = build_profile(history)
 
     if len(history) < MIN_SESSIONS:
         history.append(session)
-        print("Still learning: added without checking.")
+        print("Still getting to know your taste, session added to your profile.")
         return
 
     score = unusual_score(session, profile)
     if score < THRESHOLD:
         history.append(session)
-        print(f"Looks like your usual viewing (score {score:.2f}): learned.")
+        print(f"This looks like your usual viewing pattern, so I've added it to your profile.")
         return
 
-    print(f"\nThis session looks unusual (score {score:.2f}):")
+    print(f"\nThis doesn't look like your usual viewing pattern:")
     for reason in explain(session, profile):
         print(" -", reason)
     answer = input("Was this you? (yes/no): ").strip().lower()   # waits for typing, like scanf
 
-    if answer == "yes":
+    if answer in ("yes", "y"):
         history.append(session)
-        print("Learned, session added to your history.")
-    elif answer == "no":
+        print("Got it, I'll use this for your recommendations.")
+    elif answer in ("no", "n"):
         ignored.append(session)
-        print("Session ignored, your profile is unchanged.")
+        print("Session ignored, your recommendations won't change.")
     else:
-        print("Invalid answer, session ignored.")
+        pending.append(session)
+        print("This won't be used for your recommendations until you confirm it's you. Please check back later.")
 
 history = [
     ["The Silent Harbour", "Another Crime"],
@@ -119,3 +120,4 @@ print("\nFinal profile:")
 for genre, share in build_profile(history).items():
     print(f"  {genre}: {share * 100:.0f}%")
 print("Ignored sessions:", ignored)
+print("Pending sessions:", pending)
