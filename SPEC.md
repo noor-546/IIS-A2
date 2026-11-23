@@ -21,6 +21,8 @@ unusual: holds the session back and asks "was this you?" and show why. user answ
 ## Fallback- what happens if profile is too new to judge, or no response from user?
 if profile is too new, learn automatically without asking until at least 5 sessions so that there is something sufficient to compare to.
 
-if user doesn't answer, wait don't learn- user can always go back to account history and undo what was learned from the session though if necessary.
+if user doesn't answer, wait don't learn- keep session in pending list until they decide.
+
+planned(not built): history screen. user can go back to account history and undo what was learned from the session if necessary.
 
 ## Not in scope- what won't get built
