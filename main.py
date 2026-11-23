@@ -107,9 +107,9 @@ for genre in profile:
 
 new_sessions = [
     ["Bluey", "Busy Rocket"],              # child
-    ["The Silent Harbour"],                # Sam
+    ["The Silent Harbour"],                # user
     ["Scream", "The Haunted Mansion"],     # friend
-    ["Deep Sea Dive"],                     # Sam tries documentaries
+    ["Deep Sea Dive"],                     # user tries documentaries
     ["The Final Frontier"],                # more documentaries
 ]
 for session in new_sessions:
