@@ -33,8 +33,15 @@
 -Messages now show what happens to user recommendations so it is easier for them to understand what is going on.
 -Check: ran it again; made sure all the messages were shown correctly and easy to read.
 
+## 7. Review pending sessions
+-At the end of a run pending sessions are asked about again; yes learns, no ignores and unclear remains pending.
+-Before this, a pending session stayed stuck forever and user has no way to resolve. This helps user stay in control.
+-Bug found while testing: yes/no didn't remove the session from the pending list and the review ran after the final profile was printed. Fixed by adding 'pending.remove(session)'
+-Check: left documentary pending then typed "yes" and documentary went from 8% to 14% in final profile. Press enter both times and it stayed pending once, with the "still waiting" message.
+
 ## Observations from testing
 -The system adapts slowly (e.g. after one "yes", documentaries were 8% of the profile (under 10%), so the second documentary was still asked about; after two it would be 14% and learned without asking)
 -This is cautious adaptation, but it means asking more than once about a genuine new interest
+-In one test I answered "yes" to the child's cartoons by mistake, and kids became 13% of the profile. There is no way to undo a decision yet, so one wrong answer changes recommendations. Undo is planned.
 
 ## AI assistance
