@@ -1,6 +1,8 @@
 # IIS-A2
 # Was this you?
 
+word count: about 300 (code and commands not counted)
+
 A Python terminal prototype for shared streaming accounts. It checks whether a new viewing session is unusual for the account holder's profile and, if so, explains why and asks "Was this you?" before learning from it.
 
 ## Project status
