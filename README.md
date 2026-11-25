@@ -17,7 +17,7 @@ A Python terminal prototype for shared streaming accounts. It checks whether a n
 Answer the prompts as the account holder: `no` for the child's cartoons, `no` for the friend's horror, press Enter (no answer) for "Deep Sea Dive", `yes` for "The Final Frontier", then `y` at the pending review.
 
 ## Development record
-Full notes on what changed, why and how I checked it: [DEVLOG.md](DEVLOG.md). Commit history: [commits](../../commits/main).
+Full notes on what changed, why and how I checked it: [DEVLOG.md](DEVLOG.md). Commit history: [commits](https://github.com/noor-546/IIS-A2/commits/main).
 1. One-page spec (`SPEC.md`), example catalogue and viewing history.
 2. Profile built from genre shares; checked by hand (crime 45%).
 3. Unusualness rule, tested on child, usual and half-horror sessions.
