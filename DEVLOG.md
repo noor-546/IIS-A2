@@ -45,3 +45,4 @@
 -In one test I answered "yes" to the child's cartoons by mistake, and kids became 13% of the profile. There is no way to undo a decision yet, so one wrong answer changes recommendations. Undo is planned.
 
 ## AI assistance
+-I used Claude (Anthropic) as a tutor and reviewer. It explained Python compared with C, set each step, gave some code (e.g. `get_genre`, the counting part of `build_profile`, `explain`, and the skeletons of `check_session` and `review_pending`), reviewed my code and errors
